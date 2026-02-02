@@ -28,6 +28,27 @@
             overflow-x: hidden;
         }
 
+        /* Top Avatar Styles */
+        .top-avatar-container {
+            display: flex;
+            justify-content: center;
+            padding-top: 2rem;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+        }
+
+        .top-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            object-fit: cover;
+            box-shadow: 0 0 20px rgba(79, 70, 229, 0.4);
+        }
+
         /* Background Decor */
         .blob {
             position: fixed;
@@ -209,10 +230,15 @@
 
     <div class="blob"></div>
 
+    <!-- Circular Avatar at top of page -->
+    <div class="top-avatar-container">
+        <img src="https://github.com/yasklieur/mygraph-ai-portfolio/blob/main/Omolayo%20osungbade%20professional%20portrait.jpg?raw=true" alt="Omolayo Avatar" class="top-avatar">
+    </div>
+
     <header>
         <div class="container hero-content">
             <div class="profile-img-container">
-                <img src="Omolayo osungbade professional portrait.jpg" alt="Omolayo Arogundade" class="profile-img" onerror="this.src='https://via.placeholder.com/400x500?text=Omolayo+Arogundade'">
+                <img src="https://github.com/yasklieur/mygraph-ai-portfolio/blob/main/Omolayo%20osungbade%20professional%20portrait.jpg?raw=true" alt="Omolayo Arogundade" class="profile-img" onerror="this.src='https://via.placeholder.com/400x500?text=Omolayo+Arogundade'">
             </div>
             <div class="hero-text">
                 <div class="badge">PhD • Research Specialist • AI Scholar</div>
