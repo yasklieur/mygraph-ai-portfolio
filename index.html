@@ -3,368 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Omolayo Arogundade | GenAI Portfolio</title>
+    <title>MyGraph AI Portfolio</title>
     <style>
-        :root {
-            --primary: #4f46e5;
-            --secondary: #7c3aed;
-            --accent: #f472b6;
-            --dark: #1e1b4b;
-            --light: #f8fafc;
-            --glass: rgba(255, 255, 255, 0.05);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-        }
-
         body {
-            background-color: var(--dark);
-            color: var(--light);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.6;
-            overflow-x: hidden;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: #f8f9fa;
         }
-
-        /* Top Avatar Styles */
-        .top-avatar-container {
-            display: flex;
-            justify-content: center;
-            padding-top: 2rem;
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 10;
-        }
-
-        .top-avatar {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            border: 2px solid var(--primary);
-            object-fit: cover;
-            box-shadow: 0 0 20px rgba(79, 70, 229, 0.4);
-        }
-
-        /* Background Decor */
-        .blob {
-            position: fixed;
-            width: 500px;
-            height: 500px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            filter: blur(80px);
-            border-radius: 50%;
-            z-index: -1;
-            opacity: 0.2;
-            animation: move 20s infinite alternate;
-        }
-
-        @keyframes move {
-            from { transform: translate(-10%, -10%); }
-            to { transform: translate(20%, 20%); }
-        }
-
         header {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-            background: radial-gradient(circle at top right, rgba(79, 70, 229, 0.1), transparent);
+            text-align: center;
+            padding: 2rem 0;
+            border-bottom: 2px solid #eee;
         }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
-        .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .profile-img-container {
-            position: relative;
-        }
-
-        .profile-img {
-            width: 100%;
-            border-radius: 2rem;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .hero-text h1 {
-            font-size: 3.5rem;
-            line-height: 1.1;
+        h1 { margin-bottom: 0.5rem; color: #2c3e50; }
+        .subtitle { color: #666; font-style: italic; }
+        
+        section { margin: 2rem 0; }
+        h2 { border-left: 4px solid #3498db; padding-left: 1rem; color: #2c3e50; }
+        
+        .project-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             margin-bottom: 1.5rem;
-            background: linear-gradient(to right, #fff, #a5b4fc);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            transition: transform 0.2s;
         }
-
-        .hero-text p {
-            font-size: 1.25rem;
-            color: #94a3b8;
-            margin-bottom: 2rem;
-        }
-
-        .badge {
+        .project-card:hover { transform: translateY(-3px); }
+        .project-link {
             display: inline-block;
-            padding: 0.5rem 1rem;
-            background: var(--glass);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 99px;
-            font-size: 0.875rem;
-            margin-bottom: 1rem;
-            color: #cbd5e1;
+            margin-top: 1rem;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
         }
-
-        section {
-            padding: 8rem 2rem;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .section-title .underline {
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            margin: 0 auto;
-            border-radius: 2px;
-        }
-
-        /* About Grid */
-        .about-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .card {
-            background: var(--glass);
-            padding: 2.5rem;
-            border-radius: 1.5rem;
-            border: 1px solid rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            transition: transform 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary);
-        }
-
-        .card h3 {
-            margin-bottom: 1rem;
-            color: #a5b4fc;
-        }
-
-        /* Submissions Grid */
-        .submissions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .sub-item {
-            background: rgba(255,255,255,0.03);
-            border: 1px dashed rgba(255,255,255,0.2);
-            padding: 2rem;
-            border-radius: 1rem;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .sub-item:hover {
-            background: var(--glass);
-            border-style: solid;
-            border-color: var(--secondary);
-        }
-
-        .sub-item span {
-            display: block;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #64748b;
-            margin-bottom: 0.5rem;
-        }
-
+        .project-link:hover { text-decoration: underline; }
+        
         footer {
-            padding: 4rem 2rem;
             text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            color: #64748b;
-        }
-
-        @media (max-width: 768px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            .hero-text h1 { font-size: 2.5rem; }
-            .profile-img-container {
-                max-width: 300px;
-                margin: 0 auto;
-            }
+            margin-top: 4rem;
+            font-size: 0.9rem;
+            color: #888;
         }
     </style>
 </head>
 <body>
 
-    <div class="blob"></div>
-
-    <!-- Circular Avatar at top of page -->
-    <div class="top-avatar-container">
-        <img src="https://github.com/yasklieur/mygraph-ai-portfolio/blob/main/Omolayo%20osungbade%20professional%20portrait.jpg?raw=true" alt="Omolayo Avatar" class="top-avatar">
-    </div>
-
     <header>
-        <div class="container hero-content">
-            <div class="profile-img-container">
-                <img src="https://github.com/yasklieur/mygraph-ai-portfolio/blob/main/Omolayo%20osungbade%20professional%20portrait.jpg?raw=true" alt="Omolayo Arogundade" class="profile-img" onerror="this.src='https://via.placeholder.com/400x500?text=Omolayo+Arogundade'">
-            </div>
-            <div class="hero-text">
-                <div class="badge">PhD • Research Specialist • AI Scholar</div>
-                <h1>Omolayo Arogundade</h1>
-                <p>Bridging the gap between Food Science research, climate policy, and the future of Generative AI productivity.</p>
-                <div style="display: flex; gap: 1rem; justify-content: inherit;">
-                    <a href="#about" style="text-decoration: none; background: var(--primary); color: white; padding: 0.8rem 2rem; border-radius: 0.5rem; font-weight: bold;">My Journey</a>
-                    <a href="#submissions" style="text-decoration: none; border: 1px solid var(--primary); color: white; padding: 0.8rem 2rem; border-radius: 0.5rem; font-weight: bold;">Work Samples</a>
-                </div>
-            </div>
-        </div>
+        <h1>MyGraph AI Portfolio</h1>
+        <p class="subtitle">Exploring data and intelligence</p>
     </header>
 
-    <section id="about" class="container">
-        <div class="section-title">
-            <h2>About Me</h2>
-            <div class="underline"></div>
-        </div>
-        <div class="about-grid">
-            <div class="card">
-                <h3>The Researcher</h3>
-                <p>With a PhD in Food Science and Technology, I have dedicated years to scientific writing and technical documentation. My work has led to five peer-reviewed publications focusing on functional food ingredients and bioactive properties.</p>
-            </div>
-            <div class="card">
-                <h3>The Policy Leader</h3>
-                <p>Currently serving as a Program Development Assistant at <strong>Environment and Climate Change Canada</strong>, I manage portfolios for climate-related projects and lead communities of practice to drive federal innovation.</p>
-            </div>
-            <div class="card">
-                <h3>The AI Innovator</h3>
-                <p>I am currently mastering the art of Generative AI to automate complex research tasks, organize deep knowledge bases, and develop custom chatbots that enhance team productivity.</p>
-            </div>
-        </div>
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Welcome to my portfolio. I focus on leveraging AI tools to uncover insights from complex datasets and building visual narratives through data analysis.</p>
     </section>
 
-    <section id="course" style="background: rgba(0,0,0,0.2);">
-        <div class="container">
-            <div class="section-title">
-                <h2>The AI Certification</h2>
-                <p style="color: #94a3b8;">Generative AI for Work & Research Productivity</p>
-                <div class="underline" style="margin-top: 1rem;"></div>
-            </div>
-            <div class="about-grid">
-                <div class="card" style="background: none; border-color: rgba(79, 70, 229, 0.3);">
-                    <ul style="list-style: none;">
-                        <li style="margin-bottom: 1rem;">🚀 <strong>Automation:</strong> Mastering document and data task automation.</li>
-                        <li style="margin-bottom: 1rem;">📚 <strong>Literature:</strong> Advanced tools for literature reviews.</li>
-                        <li style="margin-bottom: 1rem;">🤖 <strong>Chatbots:</strong> Developing custom AI assistants.</li>
-                        <li>🛠️ <strong>Capstone:</strong> Hands-on application for real-world impact.</li>
-                    </ul>
-                </div>
-                <div class="hero-text" style="padding-left: 2rem;">
-                    <h3>Elevating Research Efficiency</h3>
-                    <p>This 8-week intensive program empowers me to integrate no-code AI tools into my workflow, ensuring that data analysis and technical reporting are not just faster, but more insightful.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <section id="projects">
+        <h2>Projects</h2>
 
-    <section id="submissions" class="container">
-        <div class="section-title">
-            <h2>Weekly Submissions</h2>
-            <p style="color: #94a3b8;">Documenting my progress through the certification</p>
-            <div class="underline" style="margin-top: 1rem;"></div>
+        <div class="project-card">
+            <h3>Workshop 2: Automated Data Analysis</h3>
+            <p>An exploration of global trends using Gapminder data. This project utilizes AI tools to analyze the relationship between two key global indicators, streamlining the path from raw data to visual insight.</p>
+            <a class="project-link" href="https://github.com/yasklieur/mygraph-ai-portfolio/commit/ce100091f540505667dcb7a1a1e1efe7cf345901" target="_blank">View Report &rarr;</a>
         </div>
-        <div class="submissions-grid">
-            <div class="sub-item">
-                <span>Week 01</span>
-                <p>AI Landscape & Prompting Basics</p>
-            </div>
-            <div class="sub-item">
-                <span>Week 02</span>
-                <p>Knowledge Organization Systems</p>
-            </div>
-            <div class="sub-item">
-                <span>Week 03</span>
-                <p>Research & Literature Review AI</p>
-            </div>
-            <div class="sub-item">
-                <span>Week 04</span>
-                <p>Spreadsheet Automation</p>
-            </div>
-            <div class="sub-item">
-                <span>Week 05</span>
-                <p>Custom Chatbot Development</p>
-            </div>
-            <div class="sub-item">
-                <span>Week 06</span>
-                <p>Workflow Integration</p>
-            </div>
-            <div class="sub-item">
-                <span>Week 07</span>
-                <p>Capstone Project: Part 1</p>
-            </div>
-            <div class="sub-item" style="border-style: solid; border-color: var(--accent);">
-                <span>Week 08</span>
-                <p>Final Capstone Showcase</p>
-            </div>
-        </div>
-    </section>
 
-    <section id="publications" class="container">
-        <div class="section-title">
-            <h2>Selected Publications</h2>
-            <div class="underline"></div>
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 1rem;">
-            <div class="card" style="padding: 1.5rem;">
-                <p style="font-size: 0.9rem; color: #a5b4fc;">2022</p>
-                <p><strong>Bioactive and chemical properties of Kersting's groundnut proteins.</strong> Food Chemistry Advances.</p>
-            </div>
-            <div class="card" style="padding: 1.5rem;">
-                <p style="font-size: 0.9rem; color: #a5b4fc;">2021</p>
-                <p><strong>Influence of Kersting's groundnut proteins on orange juice storage stability.</strong> Journal of Food Science.</p>
-            </div>
-            <div class="card" style="padding: 1.5rem;">
-                <p style="font-size: 0.9rem; color: #a5b4fc;">2020</p>
-                <p><strong>Statistical modeling and optimization of protein isolate production.</strong> Ife Journal of Technology.</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2024 Omolayo Arogundade. Ottawa, Canada.</p>
-            <p style="font-size: 0.8rem; margin-top: 10px;">PhD in Food Science & Technology | Regulatory Affairs Specialist</p>
-        </div>
+        <p>&copy; 2026 MyGraph AI Portfolio | Hosted on GitHub</p>
     </footer>
 
 </body>
