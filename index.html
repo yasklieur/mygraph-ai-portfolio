@@ -189,6 +189,10 @@
             text-align: center;
             cursor: pointer;
             transition: all 0.2s ease;
+            /* Added properties to support anchor tags seamlessly */
+            display: block;
+            text-decoration: none;
+            color: inherit;
         }
 
         .sub-item:hover {
@@ -230,7 +234,6 @@
 
     <div class="blob"></div>
 
-    <!-- Circular Avatar at top of page -->
     <div class="top-avatar-container">
         <img src="https://github.com/yasklieur/mygraph-ai-portfolio/blob/main/Omolayo%20osungbade%20professional%20portrait.jpg?raw=true" alt="Omolayo Avatar" class="top-avatar">
     </div>
@@ -308,10 +311,12 @@
                 <span>Week 01</span>
                 <p>AI Landscape & Prompting Basics</p>
             </div>
-            <div class="sub-item">
+            
+            <a href="https://github.com/yasklieur/mygraph-ai-portfolio/blob/main/World%20Health%20Indicator%20Analysis.pdf" target="_blank" class="sub-item">
                 <span>Week 02</span>
-                <p>Knowledge Organization Systems</p>
-            </div>
+                <p>Data Analytics</p>
+            </a>
+
             <div class="sub-item">
                 <span>Week 03</span>
                 <p>Research & Literature Review AI</p>
